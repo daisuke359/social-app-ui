@@ -46,5 +46,5 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "proxy": "https://localhost:8800/api"
+  "proxy": "https://social-app-mern-stack.herokuapp.com/api"
 }
