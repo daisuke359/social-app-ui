@@ -9,6 +9,11 @@ export default function Topbar() {
     const {user} = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+    const handleLogout = () => {
+        localStorage.setItem("user", null);
+        window.location.reload();
+    }
+
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -24,7 +29,7 @@ export default function Topbar() {
             </div>
             <div className="topbarRight">
                 <span className="topbarLink">Home</span>
-                <span className="topbarLink">Timeline</span>
+                <span onClick={handleLogout} className="topbarLink">Logout</span>
                 <div className="topbarIcon">
                     <div className="topbarIconItem">
                         <Person/>
