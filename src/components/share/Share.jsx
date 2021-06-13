@@ -27,14 +27,14 @@ export default function Share() {
             newPost.img = fileName;
             try {
                 console.log(data);
-                await axios.post("/upload", data);
+                await axios.post("https://social-app-mern-stack.herokuapp.com/api/upload", data);
             } catch(err) {
                 console.log(err);
             }
         }
 
         try {
-            await axios.post("/posts", newPost);
+            await axios.post("https://social-app-mern-stack.herokuapp.com/api/posts", newPost);
             window.location.reload();
         } catch(err) {
 
