@@ -85,6 +85,8 @@
 }
 
 .loginRegisterButton {
+    text-align: center;
+    text-decoration: none;
     background-color: #42b72a;
     width: 60%;
     margin: 0 auto;
