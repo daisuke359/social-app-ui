@@ -13,6 +13,7 @@ export default function Rightbar({user}) {
     const [friends, setFriends] = useState([]);
     const {user:currentUser, dispatch} = useContext(AuthContext);
     const [followed, setFollowed] =useState(currentUser.followings.includes(user?._id));
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         setFollowed(currentUser.followings.includes(user?._id));
@@ -29,6 +30,19 @@ export default function Rightbar({user}) {
         };
         getFriends();
     }, [user]);
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const usersList = await axios.get("https://social-app-mern-stack.herokuapp.com/api/users/allUsers/");
+                const filteredUsers = usersList.data.filter(u => u._id !== currentUser._id);
+                setUsers(filteredUsers);
+            }catch(err) {
+                console.log(err);
+            }
+        };
+        getUsers();
+    },[currentUser])
 
     const handleClick = async () => {
         try {
@@ -53,10 +67,10 @@ export default function Rightbar({user}) {
                     <span className="birthdayText"><b>Yui Kobayashi</b> and <b>3 other friends</b> have a birthday today</span>
                 </div>
                 <img src={`${PF}ad.png`} alt="" className="rightbarAd" />
-                <h4 className="rightbarTitle">Online Friends</h4>
+                <h4 className="rightbarTitle">Online Users</h4>
                 <ul className="rightbarFriendList">
-                    {Users.map(u=> (
-                        <Online key={u.id} user={u} />
+                    {users.map(u=> (
+                        <Online key={u._id} user={u} />
                     ))}
                     
                 </ul>
