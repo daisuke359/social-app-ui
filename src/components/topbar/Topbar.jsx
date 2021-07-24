@@ -32,7 +32,7 @@ export default function Topbar() {
                 <form className="searchbar">
                     <Search className="searchIcon"/>
                     <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search for friends" className="searchInput" type="text" />
-                    <button onClick={handleClick} type="submit">Send</button>
+                    <button onClick={handleClick} type="">Send</button>
                 </form>
             </div>
             <div className="topbarRight">
