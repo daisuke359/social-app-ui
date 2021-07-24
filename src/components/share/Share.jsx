@@ -35,7 +35,8 @@ export default function Share() {
 
         try {
             await axios.post("https://social-app-mern-stack.herokuapp.com/api/posts", newPost);
-            window.location.reload();
+            desc.current.value = "";
+            setFile(null);
         } catch(err) {
 
         }

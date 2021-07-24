@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "../topbar/topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import {Link} from "react-router-dom";
@@ -8,10 +8,17 @@ export default function Topbar() {
 
     const {user} = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const [search, setSearch] = useState("");
 
     const handleLogout = () => {
         localStorage.setItem("user", null);
         window.location.reload();
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log(search);
+        window.location.href = "/profile/" + search;
     }
 
     return (
@@ -22,10 +29,11 @@ export default function Topbar() {
                 </Link>
             </div>
             <div className="topbarCenter">
-                <div className="searchbar">
+                <form className="searchbar">
                     <Search className="searchIcon"/>
-                    <input placeholder="Search for friends, posts and videos" className="searchInput" type="text" />
-                </div>
+                    <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search for friends" className="searchInput" type="text" />
+                    <button onClick={handleClick} type="submit">Send</button>
+                </form>
             </div>
             <div className="topbarRight">
                 <span className="topbarLink">Home</span>

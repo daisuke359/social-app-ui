@@ -1,0 +1,64 @@
+@media only screen and (max-width: 768px) {
+
+    .topbarCenter {
+        flex: 0.7;
+    }
+    .topbarRight {
+        flex: 0.3;
+    }
+    .topbarLeft, .topbarHome, .topbarIcon {
+        display: none;
+    }
+    .searchbar {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .searchInput {
+        background-color: transparent;
+    }
+
+    .homeContainer {
+        flex-direction: column-reverse;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .rightbar {
+        display: none;
+    }
+
+    .loginWrapper {
+        flex-direction: column;
+    }
+
+    .loginLeft {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .shareOptions {
+        margin-left: 0;
+    }
+    .shareOption {
+        margin-right: 0;
+    }
+    .shareOptionText {
+        font-size: 10px;
+    }
+
+    .shareButton {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+
+    .loginInput, .loginButton, .loginRegisterButton {
+        height: 40px;
+    }
+}
+

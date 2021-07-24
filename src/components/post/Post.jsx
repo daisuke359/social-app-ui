@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext, forwardRef} from "react";
 import "./post.css";
 import {MoreVert} from "@material-ui/icons";
 import axios from "axios";
@@ -6,7 +6,7 @@ import {format} from "timeago.js";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 
-export default function Post({post}) {
+const Post = forwardRef(({post}, ref) => {
 
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
@@ -40,7 +40,7 @@ export default function Post({post}) {
     }
 
     return (
-        <div className="post">
+        <div ref={ref} className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
@@ -71,4 +71,6 @@ export default function Post({post}) {
             </div>
         </div>
     )
-}
+});
+
+export default Post

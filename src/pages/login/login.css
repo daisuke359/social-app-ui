@@ -32,7 +32,7 @@
 }
 
 .loginBox {
-    height: 300px;
+    height: fit-content;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -43,6 +43,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.loginInput, .loginButton, .loginRegisterButton, .lginForgot {
+    margin: 10px 0;
 }
 
 .loginInput {
@@ -62,6 +66,7 @@
 }
 
 .loginButton, .loginRegisterButton {
+    width: 100%;
     height: 50px;
     border-radius: 10px;
     -webkit-border-radius: 10px;

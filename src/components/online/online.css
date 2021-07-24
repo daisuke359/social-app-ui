@@ -2,11 +2,22 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    width: 65%;
+}
+
+.rightbarFriend:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 
 .rightbarProfileImgContainer {
     margin-right: 10px;
     position: relative;
+    text-decoration: none;
 }
 
 .rightbarProfileImg {
@@ -30,11 +41,12 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     position: absolute;
-    top: -2px;
-    right: 0;
+    top: 17px;
     border: 2px solid white;
 }
 
 .rightbarUsername {
     font-weight: 500;
+    color: black;
+    margin-left: 5px;
 }
