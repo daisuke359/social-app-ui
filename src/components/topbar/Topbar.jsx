@@ -28,13 +28,13 @@ export default function Topbar() {
                     <span className="logo">Social App</span>
                 </Link>
             </div>
-            <div className="topbarCenter">
+            <form className="topbarCenter">
                 <form className="searchbar">
                     <Search className="searchIcon"/>
                     <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search for friends" className="searchInput" type="text" />
                     <button onClick={handleClick} type="">Send</button>
                 </form>
-            </div>
+            </form>
             <div className="topbarRight">
                 <span className="topbarLink">Home</span>
                 <span onClick={handleLogout} className="topbarLink">Logout</span>
