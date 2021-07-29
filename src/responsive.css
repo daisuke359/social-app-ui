@@ -18,6 +18,11 @@
         background-color: transparent;
     }
 
+    .suggestedUsersContainer {
+        left: 5%;
+        width: 85%;
+    }
+
     .homeContainer {
         flex-direction: column-reverse;
     }
