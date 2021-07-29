@@ -111,3 +111,55 @@
     cursor: pointer;
     margin-right: 10px;
 }
+
+.suggestedUsersContainer {
+    background-color: lightgray;
+    position: absolute;
+    top: 50px;
+    left: 25%;
+    width: 50%;
+    height: fit-content;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+
+
+.suggestedUserContainer {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.suggestedUsersContainer > :first-child > div{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.suggestedUsersContainer > :last-child > div{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.suggestedUserContainer:hover {
+    background-color: gray;
+}
+
+.suggestedUserContainer > img {
+    width: 40px;
+    height: fit-content;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    object-fit: cover;
+}
+
+.suggestedUserName {
+    margin-left: 20px;
+}

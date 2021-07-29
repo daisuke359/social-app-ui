@@ -1,25 +1,45 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import "../topbar/topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
 
 export default function Topbar() {
 
     const {user} = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const [search, setSearch] = useState("");
+    const [users, setUsers] = useState([]);
+    const [suggestedUsers, setSuggesteUsers] = useState([]);
 
     const handleLogout = () => {
         localStorage.setItem("user", null);
         window.location.reload();
     }
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        console.log(search);
-        window.location.href = "/profile/" + search;
+
+    const handleChange = (e) => {
+        if(e.target.value) {
+            const suggestedUsersList = users.filter(u => u.username.includes(e.target.value));
+            setSuggesteUsers(suggestedUsersList);
+        } else {
+            setSuggesteUsers([]);
+        }
+        
     }
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const usersList = await axios.get("https://social-app-mern-stack.herokuapp.com/api/users/allUsers/");
+                const filteredUsers = usersList.data.filter(u => u._id !== user._id);
+                setUsers(filteredUsers);
+            }catch(err) {
+                console.log(err);
+            }
+        };
+        getUsers();
+    },[user])
 
     return (
         <div className="topbarContainer">
@@ -29,12 +49,25 @@ export default function Topbar() {
                 </Link>
             </div>
             <form className="topbarCenter">
-                <form className="searchbar">
+                <form onSubmit={e => e.preventDefault()} className="searchbar">
                     <Search className="searchIcon"/>
-                    <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search for friends" className="searchInput" type="text" />
-                    <button onClick={handleClick} type="">Send</button>
+                    <input onChange={handleChange} placeholder="Search for friends" className="searchInput" type="text" />
                 </form>
             </form>
+            {suggestedUsers && 
+                <div className="suggestedUsersContainer">
+                    {
+                    suggestedUsers.map((u, index) => (
+                    <Link key={index} to={`/profile/${u.username}`} style={{textDecoration:"none", color:"black"}}>
+                    <div className="suggestedUserContainer">
+                        <img src={u.profilePicture ? PF + user.profilePicture : PF+"person/noAvatar.png"} alt="" />
+                        <h4 className="suggestedUserName">{u.username}</h4>
+                    </div>
+                    </Link>
+                    ))
+                    }
+                </div>
+            }
             <div className="topbarRight">
                 <Link to="/" style={{textDecoration:"none", color:"white"}}>
                     <span className="topbarLink">Home</span>
