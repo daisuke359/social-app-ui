@@ -60,7 +60,7 @@ export default function Topbar() {
                     suggestedUsers.map((u, index) => (
                     <Link key={index} to={`/profile/${u.username}`} style={{textDecoration:"none", color:"black"}}>
                     <div className="suggestedUserContainer">
-                        <img src={u.profilePicture ? PF + user.profilePicture : PF+"person/noAvatar.png"} alt="" />
+                        <img src={u.profilePicture ? PF + u.profilePicture : PF+"person/noAvatar.png"} alt="" />
                         <h4 className="suggestedUserName">{u.username}</h4>
                     </div>
                     </Link>
