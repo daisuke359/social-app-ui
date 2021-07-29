@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import "./rightbar.css";
-import {Users} from "../../dummyData";
 import Online from '../online/Online';
 import axios from 'axios';
 import { Link } from 'react-router-dom';

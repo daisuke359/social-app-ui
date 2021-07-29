@@ -36,7 +36,9 @@ export default function Topbar() {
                 </form>
             </form>
             <div className="topbarRight">
-                <span className="topbarLink">Home</span>
+                <Link to="/" style={{textDecoration:"none", color:"white"}}>
+                    <span className="topbarLink">Home</span>
+                </Link>
                 <span onClick={handleLogout} className="topbarLink">Logout</span>
                 <div className="topbarIcon">
                     <div className="topbarIconItem">
