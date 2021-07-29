@@ -151,7 +151,7 @@
 
 .suggestedUserContainer > img {
     width: 40px;
-    height: fit-content;
+    height: 40px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
