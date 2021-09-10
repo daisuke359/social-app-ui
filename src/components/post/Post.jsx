@@ -61,7 +61,6 @@ const Post = forwardRef(({post}, ref) => {
                 <div className="postBottom">
                     <div className="postBottomLeft">
                         <img className="likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt="" />
-                        <img className="likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt="" />
                         <span className="postLikeCounter">{like} people liked this share</span>
                     </div>
                     <div className="postBottomRight">

@@ -15,20 +15,20 @@ export default function Rightbar({user}) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        setFollowed(currentUser.followings.includes(user?._id));
-    }, [user]);
+        setFollowed(currentUser.followings.includes(currentUser?._id));
+    }, [currentUser]);
     
     useEffect(() => {
         const getFriends = async () => {
             try {
-                const friendList = await axios.get("https://social-app-mern-stack.herokuapp.com/api/users/friends/" + user?._id);
+                const friendList = await axios.get("https://social-app-mern-stack.herokuapp.com/api/users/friends/" + currentUser?._id);
                 setFriends(friendList.data);
             } catch(err) {
                 console.log(err);
             }
         };
         getFriends();
-    }, [user]);
+    }, [currentUser]);
 
     useEffect(() => {
         const getUsers = async () => {
@@ -61,11 +61,6 @@ export default function Rightbar({user}) {
     const HomeRightbar = () => {
         return (
             <>
-                <div className="birthdayContainer">
-                    <img className="birthdayImg" src={`${PF}gift.png`} alt="" />
-                    <span className="birthdayText"><b>Yui Kobayashi</b> and <b>3 other friends</b> have a birthday today</span>
-                </div>
-                <img src={`${PF}ad.png`} alt="" className="rightbarAd" />
                 <h4 className="rightbarTitle">Online Users</h4>
                 <ul className="rightbarFriendList">
                     {users.map(u=> (
@@ -98,7 +93,7 @@ export default function Rightbar({user}) {
                     </div>
                     <div className="rightbarInfoItem">
                         <span className="rightbarInfoKey">Relationship: </span>
-                        <span className="rightbarInfoValue">{user.relationship===1 ? "Single" : user.relationship === 2 ? "Married" : "-"}</span>
+                        <span className="rightbarInfoValue">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "Married" : "-"}</span>
                     </div>
                 </div>
                 <h4 className="rightbarTitle">User Friends</h4>

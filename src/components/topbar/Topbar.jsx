@@ -16,11 +16,15 @@ export default function Topbar() {
         localStorage.setItem("user", null);
         window.location.reload();
     }
+    // u.username.includes(e.target.value)
 
 
     const handleChange = (e) => {
         if(e.target.value) {
-            const suggestedUsersList = users.filter(u => u.username.includes(e.target.value));
+            console.log(users);
+            const suggestedUsersList = users.filter(u =>
+                u.username && u.username.includes(e.target.value)
+            );
             setSuggesteUsers(suggestedUsersList);
         } else {
             setSuggesteUsers([]);
@@ -48,12 +52,12 @@ export default function Topbar() {
                     <span className="logo">Social App</span>
                 </Link>
             </div>
-            <form className="topbarCenter">
+            <div className="topbarCenter">
                 <form onSubmit={e => e.preventDefault()} className="searchbar">
                     <Search className="searchIcon"/>
                     <input onChange={handleChange} placeholder="Search for friends" className="searchInput" type="text" />
                 </form>
-            </form>
+            </div>
             {suggestedUsers && 
                 <div className="suggestedUsersContainer">
                     {
